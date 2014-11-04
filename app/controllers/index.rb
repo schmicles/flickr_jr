@@ -1,4 +1,9 @@
 get '/' do
-  # Look in app/views/index.erb
-  erb :index
+  # @photo = Photo.all
+  erb :test
+end
+
+get '/test' do
+  # @photo = Photo.all
+  erb :test
 end

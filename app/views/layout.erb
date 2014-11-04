@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -15,9 +16,28 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>slickerings</title>
 </head>
 <body>
+  <div class="container">
+    <img src="http://i91.photobucket.com/albums/k312/Wunderschlung/Stuff/SupCatAvatar.jpg"><br>
+
+      <a href="/test"><button type="button" class="btn btn-default navbar-btn">home</button></a>
+      <% if session[:user_id] == nil %>
+        <a href="/login"><button type="button" class="btn btn-default navbar-btn">log in / sign up</button></a>
+      <% end %>
+
+        <% if session[:user_id] != nil %>
+          <a href="/users/<%= :user_id %>/"><button type="button" class="btn btn-default navbar-btn">my albums</button></a>
+
+          <a href="/albums/new"<button type="button" class="btn btn-default navbar-btn">create new album</button></a>
+
+          <form action = "/logout" method="post">
+            <input name="_method" value="delete" type="hidden">
+            <button type="submit" name="submit" class="btn btn-default">log out</button>
+          </form>
+        <% end %>
+        <p>
   <%= yield %>
 </body>
 </html>

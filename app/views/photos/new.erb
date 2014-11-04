@@ -1,0 +1,11 @@
+<div id="content">
+  <h2>Album title: <%= @new_album.title %></h2>
+  <hr>
+
+  <h4>File uploader!</h4>
+    <form method="post" enctype='multipart/form-data'>
+      <input type='file' name='myfile'>
+      <br>
+      <input type='submit' value='Upload!'>
+    </form>
+</div>

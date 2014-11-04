@@ -1,0 +1,17 @@
+<div id="content">
+  <h2>Create New Album</h2>
+
+  <form id="new" role="form" action="/albums" method="post">
+    <div class="form-group">
+      <label for="inputTitle">Title</label>
+      <input name="post[title]" type="text" class="form-control" id="inputTitle" placeholder="Enter title">
+    </div>
+
+    <div class="form-group">
+      <label for="inputDescription">Description</label>
+      <textarea name="post[description]" class="form-control" id="inputDescription" placeholder="Enter description" rows="8"></textarea>
+    </div>
+
+    <button value="submit" class="btn btn-default">Create New Album</button>
+  </form>
+</div>

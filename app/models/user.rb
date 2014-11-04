@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many  :albums
-  has_many  :photos, through: :albums
+
 
   validates :username, uniqueness: true, presence: true
   validates :password, presence: true

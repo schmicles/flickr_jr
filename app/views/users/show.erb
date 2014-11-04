@@ -1,0 +1,9 @@
+<h3><strong><%= @user.username.capitalize %>'s Albums</strong></h3>
+
+<hr>
+<% @user.photos.each do |photo| %>
+  <a href="/photo/<%= photo.id %>"><img src="/albums/<%= photo.album_id %>/<%= photo.id %>"></a>
+  <h5><%= photo.caption %></h5>
+  <p>Uploaded at: <%= photo.created_at %></p>
+  <hr>
+<% end %><p>

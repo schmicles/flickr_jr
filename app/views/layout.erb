@@ -28,7 +28,7 @@
       <% end %>
 
         <% if session[:user_id] != nil %>
-          <a href="/users/<%= :user_id %>/"><button type="button" class="btn btn-default navbar-btn">my albums</button></a>
+          <a href="/albums/<%= session[:user_id] %>"><button type="button" class="btn btn-default navbar-btn">my albums</button></a>
 
           <a href="/albums/new"<button type="button" class="btn btn-default navbar-btn">create new album</button></a>
 

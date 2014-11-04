@@ -30,3 +30,11 @@ end
 #   Post.find(params[:id]).destroy
 #   redirect '/posts'
 # end
+
+get '/album/:id' do
+  @user = User.find_by(id: session[:user_id])
+  @album = Album.where(id: params[:id])
+  @photos = Photo.where(album_id: @album.id)
+
+  erb :'albums/show'
+end

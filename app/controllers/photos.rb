@@ -20,10 +20,10 @@ get '/photos/:id' do
 end
 
 # ----- Receive and save the uploaded file -----
-post '/photos' do
-  File.open('public/images/' + params['myfile'][:filename], "w") do |f|
+post '/photos/:album_id' do
+  photo = File.open('public/images/' + params['myfile'][:filename], "w") do |f|
     f.write(params['myfile'][:tempfile].read)
+    puts params['myfile']
   end
-  return "The file was successfully uploaded!"
-  redirect '/albums/:album_id'
+  redirect "/albums/#{params[:album_id]}/#{photo.id}"
 end

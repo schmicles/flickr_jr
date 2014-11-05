@@ -3,7 +3,14 @@
     <% @all_albums.each do |album| %>
       <a href="/album/<%= album.id %>"><%= album.title %></a>
       <h5><%= album.description %></h5>
-      <p>Album: <a href="/albums/<%= album.id %>"><%= album.title %></a></p>
+
+      <% if(album.user_id == session[:user_id]) %>
+        <form action="/albums" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="hidden" name="id" value= <%= album.id%> >
+          <button class="btn btn-default" value="submit">Delete</button>
+        </form>
+      <% end %>
       <hr>
     <% end %>
 </div>

@@ -25,16 +25,10 @@ post '/albums' do
   end
 end
 
-# Delete Post
-# delete '/posts' do
-#   Post.find(params[:id]).destroy
-#   redirect '/posts'
-# end
-
-get '/album/:id' do
-  @user = User.find_by(id: session[:user_id])
-  @album = Album.where(id: params[:id])
-  @photos = Photo.where(album_id: @album.id)
-
-  erb :'albums/show'
+# ----- Delete Post -----
+delete '/albums' do
+  album = Album.find(params[:id])
+  user = album.user
+  album.destroy
+  redirect "/albums/#{user.id}"
 end

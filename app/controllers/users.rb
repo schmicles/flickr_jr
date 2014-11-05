@@ -17,7 +17,6 @@ post '/sessions' do
     new_user = User.find_by(username: params[:username])
 
     if new_user.authenticate(params[:password])
-      puts new_user
       session[:user_id] = new_user.id
       redirect "/test"
     else

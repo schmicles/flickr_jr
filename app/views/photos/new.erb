@@ -1,14 +1,21 @@
 <div id="content">
-  <h2>Album title: <%= @new_album.title %></h2>
+  <h2>Album: <%= @new_album.title %></h2>
   <hr>
 
   <h4>File uploader!</h4>
-    <form action ="/photos/<%= @new_album.id %>" method="post" enctype='multipart/form-data'>
-      <input type='file' name='myfile'>
-      <br>
+    <form role ="form" action ="/photos" method="post" enctype='multipart/form-data'>
+      <div class="form-group">
+        <input type="hidden" name="post[album_id]" value= <%= @new_album.id%> >
+        <input type='file' name='post[file_name]'>
+      </div>
+
+        <p>
+      <div class="form-group">
+        <label for="inputCaption">Caption</label>
+        <textarea name="post[caption]" class="form-control" id="inputCaption" placeholder="Enter caption" rows="3"></textarea>
+      </div>
       <input type='submit' value='Upload!'>
     </form>
-
-    caption textarea
-
 </div>
+
+

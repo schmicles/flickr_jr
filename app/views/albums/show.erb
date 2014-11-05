@@ -1,0 +1,17 @@
+<div id="content">
+  <h2>My Albums</h2>
+    <% @photos.each do |photo| %>
+      <a href="/photo/<%= photo.id %>"><%= photo.title %></a>
+      <h5><%= photo.caption %></h5>
+      <p>Caption: <a href="/albums/<%= photo.id %>"><%= photo.title %></a></p>
+
+      <% if(@photo.user_id == session[:user_id]) %>
+        <form action="/photos" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="hidden" name="id" value= <%= @photo.id%> >
+          <button class="btn btn-default" value="submit">Delete</button>
+        </form>
+      <% end %>
+      <hr>
+    <% end %>
+</div>

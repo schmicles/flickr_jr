@@ -20,10 +20,17 @@ get '/photos/:id' do
 end
 
 # ----- Receive and save the uploaded file -----
-post '/photos/:album_id' do
-  photo = File.open('public/images/' + params['myfile'][:filename], "w") do |f|
-    f.write(params['myfile'][:tempfile].read)
-    puts params['myfile']
+post '/photos' do
+  photo = Photo.new(file_name: params[:post][:file_name][:filename], caption: params[:post][:caption], album_id: params[:post][:album_id])
+  photo.save
+  File.open('public/images/' + params[:post][:file_name][:filename], "w") do |f|
+    f.write(params[:post][:file_name][:tempfile].read)
   end
-  redirect "/albums/#{params[:album_id]}/#{photo.id}"
+  redirect "/albums/#{params[:post][:album_id]}/#{photo.id}"
+end
+
+# ----- Delete Photo -----
+delete '/photos' do
+  Photo.find(params[:id]).destroy
+  redirect '/photos'
 end

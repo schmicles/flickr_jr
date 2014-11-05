@@ -1,7 +1,8 @@
 # ----- See Photo -----
-get '/albums/:id' do
-  @album = Album.find(params[:id])
-  erb :'albums/show'
+get '/albums/:album_id/:photo_id' do
+  @photo = Photo.find(photo_id: params[:photo_id])
+  @album = Album.find(album_id: params[:album_id])
+  erb :'photos/show'
 end
 
 # ----- Show the upload form -----

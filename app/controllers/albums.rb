@@ -28,5 +28,5 @@ delete '/albums' do
   album = Album.find(params[:id])
   user = album.user
   album.destroy
-  redirect "/albums/#{user.id}"
+  redirect "/users/#{user.id}"
 end

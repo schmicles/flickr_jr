@@ -1,6 +1,10 @@
-<% @photos.each do |photo| %>
-  <a href="/photo/<%= photo.id %>"><img src="/images/<%= photo.file_name %>"></a>
-  <h5><%= photo.caption %></h5>
-  <br>Album: <a href="/albums/<%= photo.album_id %>"><%= photo.album.title %></a>
-  <br>Posted by: <a href="/users/<%= photo.album.user_id %>"><%= photo.album.user.username %></a>
-<% end %>
+<div id="content">
+  <% @photos.each do |photo| %>
+    <a href="/photo/<%= photo.id %>"><img src="/images/<%= photo.file_name %>"></a>
+    <h4><%= photo.caption %></h4>
+    Album: <a href="/albums/<%= photo.album_id %>"><%= photo.album.title %></a>
+    <br>Posted by: <a href="/users/<%= photo.album.user_id %>"><%= photo.album.user.username %></a>
+    <p>
+      <hr>
+  <% end %>
+</div>

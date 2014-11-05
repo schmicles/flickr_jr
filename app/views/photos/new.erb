@@ -5,7 +5,7 @@
   <h4>File uploader!</h4>
     <form role ="form" action ="/photos" method="post" enctype='multipart/form-data'>
       <div class="form-group">
-        <input type="hidden" name="post[album_id]" value= <%= @new_album.id%> >
+        <input type="hidden" name="post[album_id]" value="<%= @new_album.id%>">
         <input type='file' name='post[file_name]'>
       </div>
 

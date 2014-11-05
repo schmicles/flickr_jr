@@ -3,7 +3,7 @@
   Posted by: <a href="/users/<%= @album.user_id %>"><%= @album.user.username %></a>
   <hr>
   <% @photos.each do |photo| %>
-    <a href="/photo/<%= photo.id %>"><img src="/images/<%= photo.file_name %>"></a>
+    <a href="/albums/<%= photo.album.id %>/<%= photo.id %>"><img src="/images/<%= photo.file_name %>"></a>
     <br>
     <h5><%= photo.caption %></h5>
 

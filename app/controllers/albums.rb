@@ -7,7 +7,7 @@ end
 # ----- See Album -----
 get '/albums/:id' do
   @album = Album.find_by(id: params[:id])
-  @photos = Photo.where(id: params[:id])
+  @photos = Photo.where(album_id: params[:id])
   erb :'albums/show'
 end
 

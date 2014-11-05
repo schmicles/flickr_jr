@@ -1,12 +1,12 @@
 <div id="content">
-    <% @photos.each do |photo| %>
-    <h2><%= photo.album.title %></h2><p>
-    <hr>
-      <a href="/photo/<%= photo.id %>"><img src="/images/<%= photo.file_name %>"></a>
-      <br>
-      <h5><%= photo.caption %></h5>
-      Posted by: <a href="/users/<%= photo.album.user_id %>"><%= photo.album.user.username %></a>
+  <h1><strong><%= @album.title.upcase %></strong></h1>
+  Posted by: <a href="/users/<%= @album.user_id %>"><%= @album.user.username %></a>
+  <hr>
+  <% @photos.each do |photo| %>
+    <a href="/photo/<%= photo.id %>"><img src="/images/<%= photo.file_name %>"></a>
+    <br>
+    <h5><%= photo.caption %></h5>
 
-      <hr>
-    <% end %>
+    <hr>
+  <% end %>
 </div>

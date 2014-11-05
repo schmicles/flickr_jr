@@ -5,7 +5,7 @@
       <a href="/photo/<%= photo.id %>"><img src="/images/<%= photo.file_name %>"></a>
       <br>
       <h5><%= photo.caption %></h5>
-
+      Posted by: <a href="/users/<%= photo.album.user_id %>"><%= photo.album.user.username %></a>
 
       <hr>
     <% end %>

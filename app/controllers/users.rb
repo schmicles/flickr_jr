@@ -11,6 +11,14 @@ get '/users/:user_id/albums' do
   erb :index
 end
 
+# ----- See All of MY Albums -----
+get '/users/:id' do
+  @user = User.find_by(id: session[:user_id])
+  @all_albums = Album.where(user_id: @user.id)
+
+  erb :'albums/index'
+end
+
 # ----- Logging In -----
 post '/sessions' do
   if User.valid?(params[:username])
@@ -18,7 +26,7 @@ post '/sessions' do
 
     if new_user.authenticate(params[:password])
       session[:user_id] = new_user.id
-      redirect "/test"
+      redirect "/"
     else
       erb :'sessions/new'
     end
@@ -32,7 +40,7 @@ post '/users' do
   @user = User.new(username: params[:username], password: params[:password])
   if @user.save
     session[:user_id] = @user.id
-    redirect "/test"
+    redirect "/"
   else
     erb :'sessions/new'
   end

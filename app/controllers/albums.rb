@@ -4,12 +4,11 @@ get '/albums/new' do
   erb :'albums/new'
 end
 
-# ----- See All of MY Albums -----
+# ----- See Album -----
 get '/albums/:id' do
-  @user = User.find_by(id: session[:user_id])
-  @all_albums = Album.where(user_id: @user.id)
 
-  erb :'albums/index'
+  @photos = Photo.where(album_id: params[:id])
+  erb :'albums/show'
 end
 
 # ----- Create New Album -----
@@ -21,11 +20,10 @@ post '/albums' do
     redirect "/photos/#{@new_album.id}"
   else
     erb :'photos/new'
-
   end
 end
 
-# ----- Delete Post -----
+# ----- Delete Album -----
 delete '/albums' do
   album = Album.find(params[:id])
   user = album.user

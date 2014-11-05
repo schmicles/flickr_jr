@@ -1,15 +1,15 @@
+# ----- Show the upload form -----
+get '/albums/:id/upload' do
+  @new_album = Album.find_by(id: params[:id])
+  @user = User.find_by(id: session[:user_id])
+  erb :'/photos/new'
+end
+
 # ----- See Photo -----
 get '/albums/:album_id/:photo_id' do
   @photo = Photo.find_by(id: params[:photo_id])
   @album = Album.where(album_id: params[:album_id])
   erb :'photos/show'
-end
-
-# ----- Show the upload form -----
-get '/photos/:id' do
-  @new_album = Album.find_by( id: params[:id])
-  @user = User.find_by(id: session[:user_id])
-  erb :'/photos/new'
 end
 
 # ----- Receive and save the uploaded file -----

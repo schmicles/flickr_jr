@@ -7,7 +7,7 @@ end
 # ----- See Album -----
 get '/albums/:id' do
   @album = Album.find_by(id: params[:id])
-  @photos = Photo.where(album_id: params[:id])
+  @photos = Photo.where(id: params[:id])
   erb :'albums/show'
 end
 
@@ -17,9 +17,9 @@ post '/albums' do
 
   @new_album = @user.albums.build(params[:post])
   if @new_album.save
-    redirect "/photos/#{@new_album.id}"
+    redirect "/albums/#{@new_album.id}/upload"
   else
-    erb :'photos/new'
+    erb :'albums/new'
   end
 end
 

@@ -13,8 +13,8 @@ end
 
 # ----- See All of MY Albums -----
 get '/users/:id' do
-  @user = User.find_by(id: session[:user_id])
-  @all_albums = Album.where(user_id: @user.id)
+  @user = User.find_by(id: params[:id])
+  @all_albums = Album.where(id: @user.id)
 
   erb :'albums/index'
 end

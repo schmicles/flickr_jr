@@ -22,6 +22,14 @@ post '/photos' do
   redirect "/albums/#{@photo.album_id}/#{@photo.id}"
 end
 
+# ----- Add Photos to Album -----
+post '/albums/:album_id' do
+  @current_album = Album.find_by(id: params[:album_id])
+  @user = User.find_by(id: session[:user_id])
+
+  redirect "/albums/#{@current_album.id}/upload"
+end
+
 # ----- Delete Photo -----
 delete '/photos' do
   Photo.find(params[:id]).destroy

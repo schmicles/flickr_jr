@@ -14,7 +14,7 @@ end
 # ----- See All of MY Albums -----
 get '/users/:id' do
   @user = User.find_by(id: params[:id])
-  @all_albums = Album.where(user_id: @user.id)
+  @all_albums = Album.where(user_id: @user.id).order('id DESC')
 
   erb :'albums/index'
 end
